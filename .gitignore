@@ -1,0 +1,10 @@
+﻿.idea/
+*/Binaries/*
+*/Resources/*
+*/!Config/*
+*/!Content/*
+*/Intermediate/*
+*/Metadata/*
+*/Saved/*
+*/!Source/*
+*/!*.uplugin
