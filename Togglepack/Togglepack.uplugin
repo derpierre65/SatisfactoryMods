@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Togglepack",
+	"Description": "Switch between Hoverpack and Jetpack with a Keybind.",
+	"Category": "Modding",
+	"CreatedBy": "derpierre65",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "SML",
+			"Enabled": true,
+			"SemVersion": "^3.8.0"
+		}
+	],
+	"SemVersion": "1.0.0",
+	"GameVersion": ">=365306",
+	"LocalizationTargets": [
+		{
+			"Name": "Togglepack",
+			"LoadingPolicy": "Always"
+		}
+	]
+}
