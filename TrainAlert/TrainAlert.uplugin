@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.1.0",
+	"VersionName": "1.1.1",
 	"FriendlyName": "TrainAlert",
 	"Description": "Show a notification if a train doesn't move longer than 3 minutes.",
 	"Category": "Modding",
@@ -21,7 +21,7 @@
 			"SemVersion": "^3.8.0"
 		}
 	],
-	"SemVersion": "1.1.0",
+	"SemVersion": "1.1.1",
 	"GameVersion": ">=365306",
 	"RequiredOnRemote": false
 }
