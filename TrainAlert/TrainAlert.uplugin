@@ -1,12 +1,12 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
+	"VersionName": "1.1.0",
 	"FriendlyName": "TrainAlert",
 	"Description": "Show a notification if a train doesn't move longer than 3 minutes.",
 	"Category": "Modding",
 	"CreatedBy": "derpierre65",
-	"CreatedByURL": "",
+	"CreatedByURL": "https://github.com/derpierre65/SatisfactoryMods",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "https://discord.gg/Zg4VQXZ7MG",
@@ -21,7 +21,7 @@
 			"SemVersion": "^3.8.0"
 		}
 	],
-	"SemVersion": "1.0.0",
+	"SemVersion": "1.1.0",
 	"GameVersion": ">=365306",
 	"RequiredOnRemote": false
 }
