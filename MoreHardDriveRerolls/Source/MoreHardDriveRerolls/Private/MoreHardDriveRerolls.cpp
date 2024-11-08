@@ -31,7 +31,7 @@ FRerollHardDriveData AMoreHardDriveRerolls::GetHardDriveData(const UFGHardDrive*
 	auto UnclaimedHardDriveData = AFGResearchManager::Get(GetWorld())->mUnclaimedHardDriveData;
 	FRerollHardDriveData HardDriveData;
 
-	for (const auto UnclaimedData : UnclaimedHardDriveData)
+	for (auto UnclaimedData : UnclaimedHardDriveData)
 	{
 		if (UnclaimedData.HardDrive != HardDrive) continue;
 
