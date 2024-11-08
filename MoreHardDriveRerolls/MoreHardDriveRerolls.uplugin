@@ -1,0 +1,39 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "More Hard Drive Rescans",
+	"Description": "Increase max hard drive rescans per savegame from 1 to 9999.",
+	"Category": "Modding",
+	"CreatedBy": "derpierre65",
+	"CreatedByURL": "https://github.com/derpierre65/SatisfactoryMods",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://discord.gg/Zg4VQXZ7MG",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "MoreHardDriveRerolls",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"Enabled": true,
+			"SemVersion": "^3.8.0"
+		}
+	],
+	"SemVersion": "1.0.0",
+	"GameVersion": ">=365306",
+	"LocalizationTargets": [
+		{
+			"Name": "MoreHardDriveRerolls",
+			"LoadingPolicy": "Always"
+		}
+	]
+}
