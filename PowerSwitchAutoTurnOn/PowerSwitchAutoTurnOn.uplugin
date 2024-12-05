@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "PowerSwitchAutoTurnOn",
+	"Description": "Turn on the switched off priority power switches if enough power production is there",
+	"Category": "Modding",
+	"CreatedBy": "derpierre65",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://discord.gg/Zg4VQXZ7MG",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "SML",
+			"Enabled": true,
+			"SemVersion": "^3.8.0"
+		}
+	],
+	"SemVersion": "1.0.0",
+	"GameVersion": ">=382498",
+	"LocalizationTargets": [
+		{
+			"Name": "PowerSwitchAutoTurnOn",
+			"LoadingPolicy": "Always"
+		}
+	]
+}
