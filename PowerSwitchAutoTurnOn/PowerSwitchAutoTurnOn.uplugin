@@ -3,7 +3,7 @@
 	"Version": 1,
 	"VersionName": "1.0.0",
 	"FriendlyName": "PowerSwitchAutoTurnOn",
-	"Description": "Turn on the switched off priority power switches if enough power production is there",
+	"Description": "Automatically turn on power switches when power capacity meets priority consumption needs.",
 	"Category": "Modding",
 	"CreatedBy": "derpierre65",
 	"CreatedByURL": "",
