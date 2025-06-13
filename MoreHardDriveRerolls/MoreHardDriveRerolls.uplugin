@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
+	"VersionName": "1.0.1",
 	"FriendlyName": "More Hard Drive Rescans",
 	"Description": "Increase max hard drive rescans per savegame from 1 to 9999.",
 	"Category": "Modding",
@@ -25,11 +25,11 @@
 		{
 			"Name": "SML",
 			"Enabled": true,
-			"SemVersion": "^3.8.0"
+			"SemVersion": "^3.11.0"
 		}
 	],
-	"SemVersion": "1.0.0",
-	"GameVersion": ">=365306",
+	"SemVersion": "1.0.1",
+	"GameVersion": ">=410840",
 	"LocalizationTargets": [
 		{
 			"Name": "MoreHardDriveRerolls",
