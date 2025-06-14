@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.0.0",
+	"VersionName": "1.1.0",
 	"FriendlyName": "PowerSwitchAutoTurnOn",
 	"Description": "Automatically turn on power switches when power capacity meets priority consumption needs.",
 	"Category": "Modding",
@@ -18,15 +18,22 @@
 		{
 			"Name": "SML",
 			"Enabled": true,
-			"SemVersion": "^3.8.0"
+			"SemVersion": "^3.11.1"
 		}
 	],
-	"SemVersion": "1.0.0",
-	"GameVersion": ">=382498",
+	"SemVersion": "1.1.0",
+	"GameVersion": ">=416835",
 	"LocalizationTargets": [
 		{
 			"Name": "PowerSwitchAutoTurnOn",
 			"LoadingPolicy": "Always"
+		}
+	],
+	"Modules": [
+		{
+			"Name": "PowerSwitchAutoTurnOn",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
 	]
 }
