@@ -1,0 +1,44 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "Equivalent Exchange",
+	"Description": "Equivalent Exchange is a mod centred around the fascinating concept of transmutation.",
+	"Category": "Modding",
+	"CreatedBy": "derpierre65",
+	"CreatedByURL": "https://github.com/derpierre65/SatisfactoryMods",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "EquivalentExchange",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "EquivalentExchangeFicsitRemoteMonitoring",
+			"Type": "Runtime",
+			"LoadingPhase": "None"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"Enabled": true,
+			"SemVersion": "^3.11.3"
+		}
+	],
+	"SemVersion": "1.0.0",
+	"GameVersion": ">=455399",
+	"LocalizationTargets": [
+		{
+			"Name": "EquivalentExchange",
+			"LoadingPolicy": "Always"
+		}
+	]
+}
