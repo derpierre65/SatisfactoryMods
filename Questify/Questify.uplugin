@@ -2,11 +2,11 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0.0",
-	"FriendlyName": "Equivalent Exchange",
-	"Description": "Equivalent Exchange is a mod centred around the fascinating concept of transmutation.",
+	"FriendlyName": "Questify",
+	"Description": "Customizable Quests for Satisfactory",
 	"Category": "Modding",
 	"CreatedBy": "derpierre65",
-	"CreatedByURL": "https://github.com/derpierre65/SatisfactoryMods",
+	"CreatedByURL": "",
 	"DocsURL": "",
 	"MarketplaceURL": "",
 	"SupportURL": "",
@@ -16,12 +16,12 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "EquivalentExchange",
+			"Name": "Questify",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		},
 		{
-			"Name": "EquivalentExchangeFicsitRemoteMonitoring",
+			"Name": "QuestifyFicsitRemoteMonitoring",
 			"Type": "Runtime",
 			"LoadingPhase": "None"
 		}
@@ -40,11 +40,5 @@
 		}
 	],
 	"SemVersion": "1.0.0",
-	"GameVersion": ">=455399",
-	"LocalizationTargets": [
-		{
-			"Name": "EquivalentExchange",
-			"LoadingPolicy": "Always"
-		}
-	]
+	"GameVersion": ">=455399"
 }
