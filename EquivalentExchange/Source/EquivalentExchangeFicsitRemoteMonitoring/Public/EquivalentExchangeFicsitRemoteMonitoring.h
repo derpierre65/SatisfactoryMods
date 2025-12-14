@@ -16,4 +16,6 @@ public:
 private:
 	UPROPERTY()
 	UWorld* CachedWorld;
+
+	bool CacheWorld(UWorld* World);
 };

@@ -14,18 +14,23 @@ DEFINE_LOG_CATEGORY(LogEquivalentExchangeFicsitRemoteMonitoring);
 void FEquivalentExchangeFicsitRemoteMonitoringModule::StartupModule()
 {
 	if (WITH_EDITOR) return;
-	
-	// currently not working with loading policy "None"
 
-	// cache current World, to use it in other hooks
+	// cache changed World, to use it in hooks
 	FWorldDelegates::OnPostWorldInitialization.AddLambda([this](UWorld* World, const UWorld::InitializationValues)
 	{
-		if (World && (World->WorldType == EWorldType::Game || World->WorldType == EWorldType::PIE))
-		{
-			CachedWorld = World;
-		}
+		CacheWorld(World);
 	});
-	
+
+	// try to fetch current world
+	for (const FWorldContext& Ctx : GEngine->GetWorldContexts())
+	{
+		UWorld* World = Ctx.World();
+		if (World && CacheWorld(World))
+		{
+			break;
+		}
+	}
+
 	// add EmcValue to /getSessionInfo
 	SUBSCRIBE_METHOD(
 		USession::getSessionInfo,
@@ -44,7 +49,7 @@ void FEquivalentExchangeFicsitRemoteMonitoringModule::StartupModule()
 			}
 		}
 	);
-	
+
 	SUBSCRIBE_METHOD_EXPLICIT(
 		TSharedPtr<FJsonObject>(*)(const TSubclassOf<UFGItemDescriptor>&, const int, float),
 		URemoteMonitoringLibrary::GetItemValueObject,
@@ -72,6 +77,18 @@ void FEquivalentExchangeFicsitRemoteMonitoringModule::StartupModule()
 
 void FEquivalentExchangeFicsitRemoteMonitoringModule::ShutdownModule()
 {
+}
+
+bool FEquivalentExchangeFicsitRemoteMonitoringModule::CacheWorld(UWorld* World)
+{
+	if (World && (World->WorldType == EWorldType::Game || World->WorldType == EWorldType::PIE))
+	{
+		CachedWorld = World;
+
+		return true;
+	}
+
+	return false;
 }
 
 #undef LOCTEXT_NAMESPACE
