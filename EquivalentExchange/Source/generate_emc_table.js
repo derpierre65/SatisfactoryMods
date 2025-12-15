@@ -1,4 +1,5 @@
 ﻿const fs = require('fs');
+const path = require('path');
 
 const oreValues = {
     "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C": 1,
@@ -36,6 +37,7 @@ const ignoreItems = [
     '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HatcherParts.Desc_HatcherParts_C',
     '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_StingerParts.Desc_StingerParts_C',
     '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_SpitterParts.Desc_SpitterParts_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_CrystalShard.Desc_CrystalShard_C',
 ];
 
 const emcValues = {
@@ -43,7 +45,8 @@ const emcValues = {
     "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C": 1,
     '/Game/FactoryGame/Resource/RawResources/Water/Desc_Water.Desc_Water_C': 0,
     '/Game/FactoryGame/Resource/Parts/Alumina/Desc_AluminaSolution.Desc_AluminaSolution_C': 544,
-    '/Game/FactoryGame/Resource/Environment/Berry/Desc_Berry.Desc_Berry_C': 8192,
+    '/Game/FactoryGame/Resource/Environment/Berry/Desc_Berry.Desc_Berry_C': 4096,
+    '/Game/FactoryGame/Resource/Environment/Nut/Desc_Nut.Desc_Nut_C': 1024,
 
     "/Game/FactoryGame/Resource/Parts/QuantumEnergy/Desc_QuantumEnergy.Desc_QuantumEnergy_C": 64,
 };
@@ -225,7 +228,9 @@ fetch('http://localhost:8081/getRecipes').then(response => response.json()).then
             ];
 
             console.log(csvFile.length + ' items with EMC value');
-            fs.writeFileSync('M:\\Steam\\steamapps\\common\\Satisfactory\\FactoryGame\\Mods\\EquivalentExchange\\Export\\EmcValues.csv', csvFile.join('\n'));
+            let emcValuesCsv = 'M:\\Steam\\steamapps\\common\\Satisfactory\\FactoryGame\\Mods\\EquivalentExchange\\Export\\EmcValues.csv';
+            fs.mkdirSync(path.dirname(emcValuesCsv), { recursive: true });
+            fs.writeFileSync(emcValuesCsv, csvFile.join('\n'));
         }
     }
 
