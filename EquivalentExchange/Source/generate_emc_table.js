@@ -1,6 +1,7 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
+const baseEMCPerSinkPoint = 128;
 const oreValues = {
     "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C": 1,
     "/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone.Desc_Stone_C": 2,
@@ -16,30 +17,9 @@ const oreValues = {
     "/Game/FactoryGame/Resource/Parts/Rubber/Desc_Rubber.Desc_Rubber_C": 60,
     "/Game/FactoryGame/Resource/Parts/Plastic/Desc_Plastic.Desc_Plastic_C": 75,
 };
-
-const baseEMCPerSinkPoint = 128;
-
 for (const ore of Object.keys(oreValues)) {
     oreValues[ore] *= baseEMCPerSinkPoint;
 }
-
-const considerRecipes = [
-    'Recipe_Alternate_EnrichedCoal_C',
-    'Recipe_TimeCrystal_C',
-    'Recipe_FicsiteIngot_Iron_C',
-    'Recipe_DarkEnergy_C',
-];
-
-const ignoreItems = [
-    '/Game/FactoryGame/Resource/Parts/AlienProtein/Desc_AlienProtein.Desc_AlienProtein_C',
-    '/Game/FactoryGame/Resource/Parts/AlienDNACapsule/Desc_AlienDNACapsule.Desc_AlienDNACapsule_C',
-    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HogParts.Desc_HogParts_C',
-    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HatcherParts.Desc_HatcherParts_C',
-    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_StingerParts.Desc_StingerParts_C',
-    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_SpitterParts.Desc_SpitterParts_C',
-    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_CrystalShard.Desc_CrystalShard_C',
-];
-
 const emcValues = {
     ...oreValues,
     "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C": 1,
@@ -50,6 +30,62 @@ const emcValues = {
 
     "/Game/FactoryGame/Resource/Parts/QuantumEnergy/Desc_QuantumEnergy.Desc_QuantumEnergy_C": 64,
 };
+const considerRecipes = [
+    'Recipe_Alternate_EnrichedCoal_C',
+    'Recipe_TimeCrystal_C',
+    'Recipe_FicsiteIngot_Iron_C',
+    'Recipe_DarkEnergy_C',
+    'Recipe_Gunpowder_C',
+];
+const ignoreItems = [
+    '/Game/FactoryGame/Resource/Parts/AlienProtein/Desc_AlienProtein.Desc_AlienProtein_C',
+    '/Game/FactoryGame/Resource/Parts/AlienDNACapsule/Desc_AlienDNACapsule.Desc_AlienDNACapsule_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HogParts.Desc_HogParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HatcherParts.Desc_HatcherParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_StingerParts.Desc_StingerParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_SpitterParts.Desc_SpitterParts_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_CrystalShard.Desc_CrystalShard_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal.Desc_Crystal_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal_mk2.Desc_Crystal_mk2_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal_mk3.Desc_Crystal_mk3_C',
+
+    '/Game/FactoryGame/Resource/Parts/AlienPowerFuel/Desc_AlienPowerFuel.Desc_AlienPowerFuel_C',
+    '/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C',
+    '/Game/FactoryGame/Resource/Parts/UraniumCell/Desc_UraniumCell.Desc_UraniumCell_C',
+
+    '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_PackagedBiofuel.Desc_PackagedBiofuel_C', // 4806
+    '/Game/FactoryGame/Resource/RawResources/Water/Desc_PackagedWater.Desc_PackagedWater_C', // 4800
+    '/Game/FactoryGame/Resource/Parts/Alumina/Desc_PackagedAlumina.Desc_PackagedAlumina_C', // 5344
+    '/Game/FactoryGame/Resource/Parts/SulfuricAcid/Desc_PackagedSulfuricAcid.Desc_PackagedSulfuricAcid_C', // 6208
+    '/Game/FactoryGame/Resource/Parts/PackagedNitrogen/Desc_PackagedNitrogenGas.Desc_PackagedNitrogenGas_C', // 42111
+    '/Game/FactoryGame/Resource/Parts/NitricAcid/Desc_PackagedNitricAcid.Desc_PackagedNitricAcid_C', // 42175
+];
+const ignoreOverrideSinkItems = [
+    // not sinkable by default game
+    '/Game/FactoryGame/Resource/Parts/AlienProtein/Desc_AlienProtein.Desc_AlienProtein_C',
+    '/Game/FactoryGame/Resource/Parts/AlienDNACapsule/Desc_AlienDNACapsule.Desc_AlienDNACapsule_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HogParts.Desc_HogParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_HatcherParts.Desc_HatcherParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_StingerParts.Desc_StingerParts_C',
+    '/Game/FactoryGame/Resource/Parts/AnimalParts/Desc_SpitterParts.Desc_SpitterParts_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_CrystalShard.Desc_CrystalShard_C',
+    '/Game/FactoryGame/Resource/Environment/Berry/Desc_Berry.Desc_Berry_C',
+    '/Game/FactoryGame/Resource/Environment/Nut/Desc_Nut.Desc_Nut_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_CrystalShard.Desc_CrystalShard_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal.Desc_Crystal_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal_mk2.Desc_Crystal_mk2_C',
+    '/Game/FactoryGame/Resource/Environment/Crystal/Desc_Crystal_mk3.Desc_Crystal_mk3_C',
+
+    '/Game/FactoryGame/Resource/Parts/AlienPowerFuel/Desc_AlienPowerFuel.Desc_AlienPowerFuel_C',
+
+    // non solid parts/resources
+    '/Game/FactoryGame/Resource/Parts/SulfuricAcid/Desc_SulfuricAcid.Desc_SulfuricAcid_C',
+    '/Game/FactoryGame/Resource/Parts/NitricAcid/Desc_NitricAcid.Desc_NitricAcid_C',
+    '/Game/FactoryGame/Resource/Parts/Alumina/Desc_AluminaSolution.Desc_AluminaSolution_C',
+    '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C',
+    '/Game/FactoryGame/Resource/Parts/QuantumEnergy/Desc_QuantumEnergy.Desc_QuantumEnergy_C',
+    '/Game/FactoryGame/Resource/RawResources/Water/Desc_Water.Desc_Water_C',
+];
 
 const calculateEmcValue = {
     '/Game/FactoryGame/Resource/RawResources/NitrogenGas/Desc_NitrogenGas.Desc_NitrogenGas_C': () => {
@@ -65,12 +101,24 @@ const calculateEmcValue = {
     },
 };
 
+function saveExportFile(name, content) {
+    const filePath = `M:\\Steam\\steamapps\\common\\Satisfactory\\FactoryGame\\Mods\\EquivalentExchange\\Export\\${name}`;
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.writeFileSync(filePath, content);
+}
+
 fetch('http://localhost:8081/getRecipes').then(response => response.json()).then(data => {
     const alternateRecipes = [];
     const recipesLeft = [];
     for (const recipe of data) {
         if (['N/A', 'FICSMAS'].includes(recipe.Category)) continue;
-        if (recipe.Name.startsWith('Alternate:') && !considerRecipes.includes(recipe.ClassName)) {
+
+        if (considerRecipes.includes(recipe.ClassName)) {
+            recipesLeft.push(recipe);
+            continue;
+        }
+        
+        if (recipe.Name.startsWith('Alternate:')) {
             alternateRecipes.push(recipe);
             continue;
         }
@@ -84,7 +132,7 @@ fetch('http://localhost:8081/getRecipes').then(response => response.json()).then
             continue;
         }
 
-        if (recipe.ProducedIn.includes('Build_Converter_C') && !considerRecipes.includes(recipe.ClassName)) {
+        if (recipe.ProducedIn.includes('Build_Converter_C')) {
             continue;
         }
 
@@ -106,10 +154,6 @@ fetch('http://localhost:8081/getRecipes').then(response => response.json()).then
     }
 
     function setEmcValue(item, value) {
-        if (ignoreItems.includes(item)) {
-            return;
-        }
-
         if (item.includes('SpaceElevatorPart_')) {
             return;
         }
@@ -218,19 +262,31 @@ fetch('http://localhost:8081/getRecipes').then(response => response.json()).then
 
             const itemKeys = Object.keys(emcValues);
             itemKeys.sort((a, b) => emcValues[a] - emcValues[b]);
-            const csvFile = [
+            const csvEmcFile = [
                 '----,ItemClass,EmcValue',
                 ...itemKeys.map(item => {
+                    if (ignoreItems.includes(item)) return null;
+
                     const name = item.split('/').pop().replace(/\.Desc_.*$/, '').replace(/^Desc_/, '');
 
                     return `${name},"${item}",${Math.floor(emcValues[item])}`;
-                }),
+                }).filter(Boolean),
+            ];
+            const csvSinkTableFile = [
+                '---,ItemClass,Points,OverriddenResourceSinkPoints',
+                ...itemKeys.map(item => {
+                    if (ignoreOverrideSinkItems.includes(item)) return null;
+                    
+                    const name = item.split('/').pop().replace(/\.Desc_.*$/, '').replace(/^Desc_/, '');
+                    const sinkPointValue = Math.max(0, Math.floor(emcValues[item] / (baseEMCPerSinkPoint / 1)));
+
+                    return `${name},"${item}",${sinkPointValue},${sinkPointValue}`;
+                }).filter(Boolean),
             ];
 
-            console.log(csvFile.length + ' items with EMC value');
-            let emcValuesCsv = 'M:\\Steam\\steamapps\\common\\Satisfactory\\FactoryGame\\Mods\\EquivalentExchange\\Export\\EmcValues.csv';
-            fs.mkdirSync(path.dirname(emcValuesCsv), { recursive: true });
-            fs.writeFileSync(emcValuesCsv, csvFile.join('\n'));
+            console.log(`${csvEmcFile.length - 1} items with EMC value, ${csvSinkTableFile.length - 1} sinkable items`);
+            saveExportFile('EmcValues.csv', csvEmcFile.join('\n'));
+            saveExportFile('SinkTable.csv', csvSinkTableFile.join('\n'));
         }
     }
 
