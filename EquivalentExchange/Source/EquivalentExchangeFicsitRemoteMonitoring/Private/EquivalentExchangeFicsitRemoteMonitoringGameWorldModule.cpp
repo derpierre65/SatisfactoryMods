@@ -12,7 +12,7 @@ void UEquivalentExchangeFicsitRemoteMonitoringGameWorldModule::DispatchLifecycle
 		AFicsitRemoteMonitoring* FrmModSubsystem = AFicsitRemoteMonitoring::Get(GetWorld());
 		if (IsValid(FrmModSubsystem))
 		{
-			UE_LOG(LogEquivalentExchangeFicsitRemoteMonitoring, Log, TEXT("register endpoints?"));
+			// register new endpoints here
 		}
 	}
 }

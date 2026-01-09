@@ -69,9 +69,14 @@ void AEEBuildableStorageEnergyCondenser::Factory_Tick(float dt)
 		return;
 	}
 
+	const int64 RequiredEmc = EEModSubsystem->GetItemEmcValue(ItemClass);
+	if (RequiredEmc <= 0)
+	{
+		return;
+	}
+	
 	ConsumeItemTicks++;
 
-	const int64 RequiredEmc = EEModSubsystem->GetItemEmcValue(ItemClass);
 	const int32 StackSize = UFGItemDescriptor::GetStackSize(ItemClass);
 	bool bConsumeItems = ConsumeItemTicks >= ConsumeItemsEveryTicks;
 	bool bIsOutputInventoryFull = true;
