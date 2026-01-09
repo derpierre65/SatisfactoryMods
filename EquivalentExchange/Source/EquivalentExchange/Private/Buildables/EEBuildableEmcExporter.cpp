@@ -2,6 +2,7 @@
 
 #include "EEModSubsystem.h"
 #include "EESimpleItemClipboardSettings.h"
+#include "EquivalentExchange.h"
 #include "FGFactoryConnectionComponent.h"
 #include "FGPowerInfoComponent.h"
 #include "UnrealNetwork.h"
@@ -115,7 +116,7 @@ void AEEBuildableEmcExporter::PreSaveGame_Implementation(int32 saveVersion, int3
 {
 	if (ItemClass != nullptr && EEModSubsystem->GetItemEmcValue(ItemClass) < 1)
 	{
-		ItemClass = nullptr;
+		SetItemClass(nullptr);
 		UE_LOG(LogEE, Log, TEXT("Reset exporter (%s) item, item has no emc value."), *GetName());
 	}
 	

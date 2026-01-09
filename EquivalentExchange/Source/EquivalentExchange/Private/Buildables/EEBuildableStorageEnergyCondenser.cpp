@@ -176,7 +176,7 @@ void AEEBuildableStorageEnergyCondenser::PreSaveGame_Implementation(int32 saveVe
 {
 	if (ItemClass != nullptr && EEModSubsystem->GetItemEmcValue(ItemClass) < 1)
 	{
-		ItemClass = nullptr;
+		SetItemClass(nullptr);
 		UE_LOG(LogEE, Log, TEXT("Reset Energy Condenser (%s) item, item has no emc value."), *GetName());
 	}
 
