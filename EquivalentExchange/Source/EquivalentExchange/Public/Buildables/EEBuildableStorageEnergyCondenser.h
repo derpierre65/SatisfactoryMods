@@ -22,6 +22,7 @@ public:
 	virtual void BeginPlay() override;
 	virtual void Factory_Tick(float dt) override;
 
+	virtual void PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion) override;
 	virtual void PostLoadGame_Implementation(int32 saveVersion, int32 gameVersion) override;
 
 	void SetItemClass(const TSubclassOf<UFGItemDescriptor> NewItemClass);

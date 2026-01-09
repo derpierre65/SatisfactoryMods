@@ -111,6 +111,17 @@ void AEEBuildableEmcExporter::SetItemClass(const TSubclassOf<UFGItemDescriptor> 
 	}
 }
 
+void AEEBuildableEmcExporter::PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion)
+{
+	if (ItemClass != nullptr && EEModSubsystem->GetItemEmcValue(ItemClass) < 1)
+	{
+		ItemClass = nullptr;
+		UE_LOG(LogEE, Log, TEXT("Reset exporter (%s) item, item has no emc value."), *GetName());
+	}
+	
+	Super::PreSaveGame_Implementation(saveVersion, gameVersion);
+}
+
 void AEEBuildableEmcExporter::SetLastGrabbedTime(const float Time)
 {
 	LastGrabbedTime = Time;

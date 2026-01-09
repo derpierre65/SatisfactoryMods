@@ -2,6 +2,7 @@
 
 #include "EEEMCPointsData.h"
 #include "EERemoteCallObject.h"
+#include "EquivalentExchange.h"
 #include "FGPlayerController.h"
 #include "SubsystemActorManager.h"
 #include "UnrealNetwork.h"
@@ -106,7 +107,7 @@ void AEEModSubsystem::SetItemEmcValue(const TSubclassOf<UFGItemDescriptor> Item,
 
 void AEEModSubsystem::UnlockItem(const TSubclassOf<UFGItemDescriptor> Item)
 {
-	if (UnlockedItems.Contains(Item) )
+	if (UnlockedItems.Contains(Item))
 	{
 		return;
 	}
@@ -163,6 +164,25 @@ TMap<TSubclassOf<UFGItemDescriptor>, int64> AEEModSubsystem::GetMappedEmcValues(
 bool AEEModSubsystem::ShouldSave_Implementation() const
 {
 	return true;
+}
+
+void AEEModSubsystem::PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion)
+{
+	if (EmcValuesMapped.IsEmpty())
+	{
+		return;
+	}
+
+	for (TSubclassOf<UFGItemDescriptor> Item : UnlockedItems)
+	{
+		if (GetItemEmcValue(Item) > 0)
+		{
+			continue;
+		}
+
+		UE_LOG(LogEE, Log, TEXT("Removing unlocked item %s, has no emc value"), *Item->GetName());
+		UnlockedItems.Remove(Item);
+	}
 }
 
 void AEEModSubsystem::PostLoadGame_Implementation(int32 saveVersion, int32 gameVersion)

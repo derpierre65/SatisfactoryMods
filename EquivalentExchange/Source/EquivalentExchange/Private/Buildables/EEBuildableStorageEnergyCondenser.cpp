@@ -172,6 +172,17 @@ void AEEBuildableStorageEnergyCondenser::Factory_Tick(float dt)
 	}
 }
 
+void AEEBuildableStorageEnergyCondenser::PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion)
+{
+	if (ItemClass != nullptr && EEModSubsystem->GetItemEmcValue(ItemClass) < 1)
+	{
+		ItemClass = nullptr;
+		UE_LOG(LogEE, Log, TEXT("Reset Energy Condenser (%s) item, item has no emc value."), *GetName());
+	}
+
+	Super::PreSaveGame_Implementation(saveVersion, gameVersion);
+}
+
 void AEEBuildableStorageEnergyCondenser::PostLoadGame_Implementation(int32 saveVersion, int32 gameVersion)
 {
 	Super::PostLoadGame_Implementation(saveVersion, gameVersion);

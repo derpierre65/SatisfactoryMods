@@ -23,6 +23,7 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	virtual bool ShouldSave_Implementation() const override;
+	virtual void PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion) override;
 	virtual void PostLoadGame_Implementation(int32 saveVersion, int32 gameVersion) override;
 
 	UFUNCTION(BlueprintCallable)

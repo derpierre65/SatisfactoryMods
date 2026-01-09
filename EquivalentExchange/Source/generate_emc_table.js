@@ -260,7 +260,7 @@ fetch('http://localhost:8081/getRecipes').then(response => response.json()).then
                 return before;
             }, []));
 
-            const itemKeys = Object.keys(emcValues);
+            const itemKeys = Object.keys(emcValues).filter((key) => emcValues[key] > 0);
             itemKeys.sort((a, b) => emcValues[a] - emcValues[b]);
             const csvEmcFile = [
                 '----,ItemClass,EmcValue',

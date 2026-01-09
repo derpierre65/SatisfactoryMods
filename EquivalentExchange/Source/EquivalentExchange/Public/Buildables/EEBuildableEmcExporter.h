@@ -32,6 +32,8 @@ public:
 
 	void SetItemClass(const TSubclassOf<UFGItemDescriptor> NewItemClass);
 
+	virtual void PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion) override;
+	
 	// IFGFactoryClipboardInterface
 	virtual UFGFactoryClipboardSettings* CopySettings_Implementation() override;
 	virtual bool PasteSettings_Implementation(UFGFactoryClipboardSettings* factoryClipboard, class AFGPlayerController* player) override;
