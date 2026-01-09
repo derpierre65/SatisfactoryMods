@@ -33,15 +33,24 @@ public:
 	virtual TSubclassOf<UObject> GetClipboardMappingClass_Implementation() override;
 	
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Consume")
 	int32 MaxSlotsPerTick = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Consume")
 	int32 MaxItemsPerSlot = 1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Produce")
 	int32 ProduceMaxItemsPerTick = 1;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Consume")
+	int32 ConsumeItemsEveryTicks = 1;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Consume")
+	bool bStopConsumeItemsIfOutputIsFull = false;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange|Consume")
+	bool bStopConsumeItemsIfEnoughEMC = false;
+
 	UPROPERTY(BlueprintReadOnly)
 	AEEModSubsystem* EEModSubsystem;
 	
@@ -62,4 +71,6 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, SaveGame, meta=(FGReplicated))
 	int64 InternalEmcValue = 0;
+	
+	int32 ConsumeItemTicks = 0;
 };

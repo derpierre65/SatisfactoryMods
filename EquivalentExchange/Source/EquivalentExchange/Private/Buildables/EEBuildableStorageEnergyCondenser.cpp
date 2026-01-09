@@ -69,48 +69,96 @@ void AEEBuildableStorageEnergyCondenser::Factory_Tick(float dt)
 		return;
 	}
 
-	// TODO workaround for now, 
-	// PreviewSlotInventory->SetAllowedItemOnIndex(0, ItemClass);
+	ConsumeItemTicks++;
 
-	bool bEmcChanged = false;
-	int32 ProcessedSlots = 0;
-	for (int32 Slot = mInventorySizeX * mInventorySizeY - 1; Slot >= 0; Slot--)
+	const int64 RequiredEmc = EEModSubsystem->GetItemEmcValue(ItemClass);
+	const int32 StackSize = UFGItemDescriptor::GetStackSize(ItemClass);
+	bool bConsumeItems = ConsumeItemTicks >= ConsumeItemsEveryTicks;
+	bool bIsOutputInventoryFull = true;
+	int32 FreeItems = 0;
+
+	TArray<FInventoryStack> InventoryStacks;
+	OutputInventory->GetInventoryStacks(InventoryStacks, true);
+	
+	for (FInventoryStack InventoryStack : InventoryStacks)
 	{
-		FInventoryStack InventoryStack;
-		GetStorageInventory()->GetStackFromIndex(Slot, InventoryStack);
-
-		const TSubclassOf<UFGItemDescriptor> SlotItem = InventoryStack.Item.GetItemClass();
-		if (!SlotItem)
+		const bool bIsValid = InventoryStack.Item.IsValid();
+		if (bIsValid && (InventoryStack.Item.GetItemClass() != ItemClass || InventoryStack.NumItems >= StackSize))
 		{
 			continue;
 		}
 
-		const int64 EmcValue = EEModSubsystem->GetItemEmcValue(SlotItem);
-		if (EmcValue <= 0)
+		if (!bIsValid)
 		{
-			continue;
+			FreeItems += StackSize;
+		}
+		else
+		{
+			FreeItems += StackSize - InventoryStack.NumItems;
 		}
 
-		const int32 ProcessItems = FMath::Min(MaxItemsPerSlot, InventoryStack.NumItems);
+		bIsOutputInventoryFull = false;
+	}
+	
+	if (bStopConsumeItemsIfOutputIsFull && bConsumeItems)
+	{
+		bConsumeItems = !bIsOutputInventoryFull;
+	}
 
-		GetStorageInventory()->Remove(SlotItem, ProcessItems);
-		InternalEmcValue += EmcValue * ProcessItems;
-		ProcessedSlots++;
-		bEmcChanged = true;
-
-		if (ProcessedSlots >= MaxSlotsPerTick)
+	if (FreeItems > 0)
+	{
+		if (bStopConsumeItemsIfEnoughEMC && FMath::FloorToInt64(InternalEmcValue / RequiredEmc) >= FreeItems)
 		{
-			break;
+			bConsumeItems = false;
 		}
 	}
 
-	const int64 RequiredEmc = EEModSubsystem->GetItemEmcValue(ItemClass);
-	const int32 GenerateItems = FMath::Min(ProduceMaxItemsPerTick, FMath::FloorToInt64(InternalEmcValue / RequiredEmc));
-	const int32 AddedItems = OutputInventory->AddStack(FInventoryStack(GenerateItems, ItemClass), true);
-	if (InternalEmcValue >= RequiredEmc && AddedItems >= 0)
+	bool bEmcChanged = false;
+	if (bConsumeItems)
 	{
-		InternalEmcValue -= RequiredEmc * AddedItems;
-		bEmcChanged = true;
+		int32 ProcessedSlots = 0;
+		for (int32 Slot = mInventorySizeX * mInventorySizeY - 1; Slot >= 0; Slot--)
+		{
+			FInventoryStack InventoryStack;
+			GetStorageInventory()->GetStackFromIndex(Slot, InventoryStack);
+
+			const TSubclassOf<UFGItemDescriptor> SlotItem = InventoryStack.Item.GetItemClass();
+			if (!SlotItem)
+			{
+				continue;
+			}
+
+			const int64 EmcValue = EEModSubsystem->GetItemEmcValue(SlotItem);
+			if (EmcValue <= 0)
+			{
+				continue;
+			}
+
+			const int32 ProcessItems = FMath::Min(MaxItemsPerSlot, InventoryStack.NumItems);
+
+			GetStorageInventory()->Remove(SlotItem, ProcessItems);
+			InternalEmcValue += EmcValue * ProcessItems;
+			ProcessedSlots++;
+			bEmcChanged = true;
+
+			if (ProcessedSlots >= MaxSlotsPerTick)
+			{
+				break;
+			}
+		}
+
+		ConsumeItemTicks = 0;
+	}
+
+	if (!bIsOutputInventoryFull)
+	{
+		const int32 GenerateItems = FMath::Min(ProduceMaxItemsPerTick, FMath::FloorToInt64(InternalEmcValue / RequiredEmc));
+		const int32 AddedItems = OutputInventory->AddStack(FInventoryStack(GenerateItems, ItemClass), true);
+		if (InternalEmcValue >= RequiredEmc && AddedItems >= 0)
+		{
+			InternalEmcValue -= RequiredEmc * AddedItems;
+			bEmcChanged = true;
+		}
 	}
 
 	if (bEmcChanged)
