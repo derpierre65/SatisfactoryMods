@@ -17,10 +17,10 @@ const finalConsumption = {
 
 for ( let i = 1; i < tiers.length; i++ ){
     const required = tiers[i] / tiers[i-1];
-    finalConsumption[i] = Math.ceil(required * finalConsumption[i-1] * 1.1);
-    if ( finalConsumption[i] > 1000 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 500) * 500;
-    else if ( finalConsumption[i] > 1000 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 100) * 100;
-    else if ( finalConsumption[i] > 10 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 50) * 50;
+    finalConsumption[i] = Math.ceil(required * finalConsumption[i-1] * 1.05);
+    if ( finalConsumption[i] > 1000 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 100) * 100;
+    else if ( finalConsumption[i] > 100 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 50) * 50;
+    else if ( finalConsumption[i] > 10 ) finalConsumption[i] = Math.ceil(finalConsumption[i] / 10) * 10;
 }
 
 for ( const key of Object.keys(finalConsumption) ) {
