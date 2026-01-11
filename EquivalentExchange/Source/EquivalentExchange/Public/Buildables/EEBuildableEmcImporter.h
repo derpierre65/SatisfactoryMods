@@ -37,6 +37,10 @@ public:
 	virtual void Factory_Tick(float dt) override;
 	virtual void Factory_CollectInput_Implementation() override;
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange", meta=(Tooltip="0 = Unlimited"))
+	int64 MaxEmcValue = 0;
+
 private:
 	float LastItemAccepted = 0;
 };

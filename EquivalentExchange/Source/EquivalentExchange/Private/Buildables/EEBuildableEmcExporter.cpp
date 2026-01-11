@@ -95,21 +95,31 @@ void AEEBuildableEmcExporter::Factory_Tick(float dt)
 
 void AEEBuildableEmcExporter::SetItemClass(const TSubclassOf<UFGItemDescriptor> NewItemClass)
 {
-	if (EEModSubsystem->IsUnlockedItem(NewItemClass) && NewItemClass != ItemClass)
+	// not unlocked item or same itme
+	if (!EEModSubsystem->IsUnlockedItem(NewItemClass) || NewItemClass == ItemClass)
 	{
-		ItemClass = NewItemClass;
-		SetLastGrabbedTime(0.f);
-
-		if (!OutputInventory->IsEmpty())
-		{
-			FInventoryStack InventoryStack;
-			OutputInventory->GetStackFromIndex(0, InventoryStack);
-			EEModSubsystem->AddEmcValue(InventoryStack.NumItems * EEModSubsystem->GetItemEmcValue(InventoryStack.Item.GetItemClass()));
-			OutputInventory->Empty();
-		}
-
-		OutputInventory->SetAllowedItemOnIndex(0, NewItemClass);
+		return;
 	}
+
+	// item is not selectable, it is higher than MaxEmcValue
+	const int64 NewEmcValue = EEModSubsystem->GetItemEmcValue(NewItemClass);
+	if (MaxEmcValue > 0 && NewEmcValue > MaxEmcValue)
+	{
+		return;
+	}
+
+	ItemClass = NewItemClass;
+	SetLastGrabbedTime(0.f);
+
+	if (!OutputInventory->IsEmpty())
+	{
+		FInventoryStack InventoryStack;
+		OutputInventory->GetStackFromIndex(0, InventoryStack);
+		EEModSubsystem->AddEmcValue(InventoryStack.NumItems * EEModSubsystem->GetItemEmcValue(InventoryStack.Item.GetItemClass()));
+		OutputInventory->Empty();
+	}
+
+	OutputInventory->SetAllowedItemOnIndex(0, NewItemClass);
 }
 
 void AEEBuildableEmcExporter::PreSaveGame_Implementation(int32 saveVersion, int32 gameVersion)

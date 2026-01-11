@@ -42,12 +42,15 @@ public:
 
 protected:
 	void SetLastGrabbedTime(const float Time);
-	
-	UPROPERTY(Replicated, EditAnywhere, BlueprintReadOnly, SaveGame)
-	TSubclassOf<UFGItemDescriptor> ItemClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange", meta=(Tooltip="0 = Unlimited"))
+	int64 MaxEmcValue = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Equivalent Exchange")
 	float TimeToProduceItem;
+
+	UPROPERTY(Replicated, BlueprintReadOnly, SaveGame)
+	TSubclassOf<UFGItemDescriptor> ItemClass;
 	
 	UPROPERTY(Transient)
 	AEEModSubsystem* EEModSubsystem;
