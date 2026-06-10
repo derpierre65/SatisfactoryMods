@@ -2,8 +2,8 @@
 
 #include "PSATOModSubsystem.h"
 
-#include "FGBuildableCircuitSwitch.h"
-#include "FGBuildablePriorityPowerSwitch.h"
+#include "Buildables/FGBuildableCircuitSwitch.h"
+#include "Buildables/FGBuildablePriorityPowerSwitch.h"
 #include "FGBuildableSubsystem.h"
 #include "FGCircuitConnectionComponent.h"
 #include "FGCircuitSubsystem.h"

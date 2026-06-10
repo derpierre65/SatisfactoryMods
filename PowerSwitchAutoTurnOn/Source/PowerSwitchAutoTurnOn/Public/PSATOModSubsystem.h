@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FGCircuitSubsystem.h"
-#include "ModSubsystem.h"
+#include "Subsystem/ModSubsystem.h"
 
 #include "PSATOModSubsystem.generated.h"
 
