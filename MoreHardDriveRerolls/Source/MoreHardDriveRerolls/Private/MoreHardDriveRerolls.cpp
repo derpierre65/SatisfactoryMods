@@ -1,7 +1,7 @@
 ﻿#include "MoreHardDriveRerolls.h"
 #include "FGResearchManager.h"
 #include "FGResearchSettings.h"
-#include "SessionSettingsManager.h"
+#include "SessionSettings/SessionSettingsManager.h"
 
 void AMoreHardDriveRerolls::BeginPlay()
 {
