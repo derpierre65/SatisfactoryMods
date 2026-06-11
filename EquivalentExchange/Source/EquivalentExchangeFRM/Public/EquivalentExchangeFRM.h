@@ -5,9 +5,9 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogEquivalentExchangeFicsitRemoteMonitoring, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogEquivalentExchangeFRM, Log, All);
 
-class FEquivalentExchangeFicsitRemoteMonitoringModule : public IModuleInterface
+class FEquivalentExchangeFRMModule : public IModuleInterface
 {
 public:
 	virtual void StartupModule() override;

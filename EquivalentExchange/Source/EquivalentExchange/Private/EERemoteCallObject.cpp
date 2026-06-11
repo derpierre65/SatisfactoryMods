@@ -1,11 +1,11 @@
 ﻿#include "EERemoteCallObject.h"
 
-#include "EEBuildableEmcExporter.h"
-#include "EEBuildableStorageEnergyCondenser.h"
-#include "EEModSubsystem.h"
+#include "Buildables/EEBuildableEmcExporter.h"
+#include "Buildables/EEBuildableStorageEnergyCondenser.h"
+#include "Subsystems/EEModSubsystem.h"
 #include "EquivalentExchange.h"
 #include "FGCharacterPlayer.h"
-#include "SubsystemActorManager.h"
+#include "Subsystem/SubsystemActorManager.h"
 
 void UEERemoteCallObject::Server_TransferEmcToItems_Implementation(TSubclassOf<UFGItemDescriptor> ItemClass, const int32 NumItems)
 {

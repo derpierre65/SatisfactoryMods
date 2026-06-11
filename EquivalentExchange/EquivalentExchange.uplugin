@@ -21,7 +21,7 @@
 			"LoadingPhase": "Default"
 		},
 		{
-			"Name": "EquivalentExchangeFicsitRemoteMonitoring",
+			"Name": "EquivalentExchangeFRM",
 			"Type": "Runtime",
 			"LoadingPhase": "None"
 		}

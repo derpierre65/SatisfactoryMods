@@ -1,6 +1,10 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
+// worth to add these items as emc value?
+//'/Game/FactoryGame/Resource/Parts/GunPowder/Desc_GunpowderMK2.Desc_GunpowderMK2_C',
+//'/Game/FactoryGame/Resource/Parts/CartridgeStandard/Desc_CartridgeStandard.Desc_CartridgeStandard_C',
+
 const baseEMCPerSinkPoint = 128;
 const oreValues = {
     "/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C": 1,

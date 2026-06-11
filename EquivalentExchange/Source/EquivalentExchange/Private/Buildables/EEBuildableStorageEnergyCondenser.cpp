@@ -1,9 +1,9 @@
-﻿#include "EEBuildableStorageEnergyCondenser.h"
+﻿#include "Buildables/EEBuildableStorageEnergyCondenser.h"
 
-#include "EEModSubsystem.h"
+#include "Subsystems/EEModSubsystem.h"
 #include "EquivalentExchange.h"
 #include "FGFactoryConnectionComponent.h"
-#include "UnrealNetwork.h"
+#include "Net/UnrealNetwork.h"
 #include "Objects/EESimpleItemClipboardSettings.h"
 
 AEEBuildableStorageEnergyCondenser::AEEBuildableStorageEnergyCondenser()

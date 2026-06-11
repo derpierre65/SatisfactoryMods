@@ -1,9 +1,9 @@
-﻿#include "EquivalentExchangeFicsitRemoteMonitoringGameWorldModule.h"
+﻿#include "EquivalentExchangeFRMGameWorldModule.h"
 
-#include "EquivalentExchangeFicsitRemoteMonitoring.h"
+#include "EquivalentExchangeFRM.h"
 #include "FicsitRemoteMonitoring.h"
 
-void UEquivalentExchangeFicsitRemoteMonitoringGameWorldModule::DispatchLifecycleEvent(ELifecyclePhase Phase)
+void UEquivalentExchangeFRMGameWorldModule::DispatchLifecycleEvent(ELifecyclePhase Phase)
 {
 	Super::DispatchLifecycleEvent(Phase);
 

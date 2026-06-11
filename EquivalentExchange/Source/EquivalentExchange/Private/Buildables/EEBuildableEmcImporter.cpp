@@ -1,6 +1,6 @@
 ﻿#include "Buildables/EEBuildableEmcImporter.h"
 
-#include "EEModSubsystem.h"
+#include "Subsystems/EEModSubsystem.h"
 #include "FGFactoryConnectionComponent.h"
 
 AEEBuildableEmcImporter::AEEBuildableEmcImporter()
@@ -45,7 +45,7 @@ void AEEBuildableEmcImporter::Factory_CollectInput_Implementation()
 	}
 
 	int64 Value = EEModSubsystem->GetItemEmcValue(OutputItems[0].GetItemClass());
-	if (Value < 1 || MaxEmcValue > 0 && Value > MaxEmcValue)
+	if (Value < 1 || (MaxEmcValue > 0 && Value > MaxEmcValue))
 	{
 		LastItemAccepted = 60.f / ItemsPerMinute;
 		return;

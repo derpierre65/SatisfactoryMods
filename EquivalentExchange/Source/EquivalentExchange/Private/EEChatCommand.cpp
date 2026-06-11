@@ -1,7 +1,7 @@
-﻿#include "EEChatCommand.h"
+#include "EEChatCommand.h"
 
-#include "CommandSender.h"
-#include "EEModSubsystem.h"
+#include "Command/CommandSender.h"
+#include "Subsystems/EEModSubsystem.h"
 #include "EquivalentExchange.h"
 #include "FGBlueprintFunctionLibrary.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -157,7 +157,7 @@ void AEEChatCommand::SendItemNotFound(UCommandSender* Sender, const FString& Ite
 	TArray<FString> PartiallyItemNames = SplitItemName(ItemName);
 	TArray<FString> Suggestions;
 
-	for (const TSubclassOf<UFGItemDescriptor> Descriptor : ItemDescriptors)
+	for (const TSubclassOf<UFGItemDescriptor>& Descriptor : ItemDescriptors)
 	{
 		FText OriginalName = UFGItemDescriptor::GetItemName(Descriptor);
 		TArray<FString> ItemNameParts;

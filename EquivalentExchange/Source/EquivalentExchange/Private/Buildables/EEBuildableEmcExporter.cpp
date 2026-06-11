@@ -1,11 +1,11 @@
 ﻿#include "Buildables/EEBuildableEmcExporter.h"
 
-#include "EEModSubsystem.h"
-#include "EESimpleItemClipboardSettings.h"
+#include "Subsystems/EEModSubsystem.h"
+#include "Objects/EESimpleItemClipboardSettings.h"
 #include "EquivalentExchange.h"
 #include "FGFactoryConnectionComponent.h"
 #include "FGPowerInfoComponent.h"
-#include "UnrealNetwork.h"
+#include "Net/UnrealNetwork.h"
 
 AEEBuildableEmcExporter::AEEBuildableEmcExporter()
 {
@@ -37,7 +37,7 @@ void AEEBuildableEmcExporter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 
-	mPowerConsumption = 5.f;
+	//mPowerConsumption = 5.f;
 	mPowerInfo->SetMaximumTargetConsumption(10.f);
 	OutputConnection->SetInventory(OutputInventory);
 	OutputConnection->SetInventoryAccessIndex(0);

@@ -1,17 +1,17 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "EquivalentExchangeFicsitRemoteMonitoring.h"
+#include "EquivalentExchangeFRM.h"
 
-#include "EEModSubsystem.h"
-#include "NativeHookManager.h"
+#include "Subsystems/EEModSubsystem.h"
+#include "Patching/NativeHookManager.h"
 #include "RemoteMonitoringLibrary.h"
-#include "Session.h"
+#include "Endpoints/World/Session.h"
 
-#define LOCTEXT_NAMESPACE "FEquivalentExchangeFicsitRemoteMonitoring"
+#define LOCTEXT_NAMESPACE "FEquivalentExchangeFRM"
 
-DEFINE_LOG_CATEGORY(LogEquivalentExchangeFicsitRemoteMonitoring);
+DEFINE_LOG_CATEGORY(LogEquivalentExchangeFRM);
 
-void FEquivalentExchangeFicsitRemoteMonitoringModule::StartupModule()
+void FEquivalentExchangeFRMModule::StartupModule()
 {
 	if (WITH_EDITOR) return;
 
@@ -75,11 +75,11 @@ void FEquivalentExchangeFicsitRemoteMonitoringModule::StartupModule()
 	);
 }
 
-void FEquivalentExchangeFicsitRemoteMonitoringModule::ShutdownModule()
+void FEquivalentExchangeFRMModule::ShutdownModule()
 {
 }
 
-bool FEquivalentExchangeFicsitRemoteMonitoringModule::CacheWorld(UWorld* World)
+bool FEquivalentExchangeFRMModule::CacheWorld(UWorld* World)
 {
 	if (World && (World->WorldType == EWorldType::Game || World->WorldType == EWorldType::PIE))
 	{
@@ -93,4 +93,4 @@ bool FEquivalentExchangeFicsitRemoteMonitoringModule::CacheWorld(UWorld* World)
 
 #undef LOCTEXT_NAMESPACE
 
-IMPLEMENT_MODULE(FEquivalentExchangeFicsitRemoteMonitoringModule, EquivalentExchangeFicsitRemoteMonitoring)
+IMPLEMENT_MODULE(FEquivalentExchangeFRMModule, EquivalentExchangeFRM)

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "FGItemDescriptor.h"
+#include "Resources/FGItemDescriptor.h"
 #include "FGSaveInterface.h"
 #include "Subsystem/ModSubsystem.h"
 #include "EEEMCPointsData.h"

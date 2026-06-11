@@ -19,6 +19,7 @@ public class EquivalentExchange : ModuleRules
 			"DeveloperSettings",
 			"PhysicsCore",
 			"InputCore",
+			"GameFeatures",
 			//"OnlineSubsystem", "OnlineSubsystemUtils", "OnlineSubsystemNull",
 			//"SignificanceManager",
 			"GeometryCollectionEngine",

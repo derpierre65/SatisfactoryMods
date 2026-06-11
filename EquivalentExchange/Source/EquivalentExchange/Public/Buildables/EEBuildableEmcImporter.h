@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "CoreMinimal.h"
-#include "FGBuildableFactory.h"
+#include "Buildables/FGBuildableFactory.h"
 #include "Buildables/FGBuildable.h"
 
 #include "EEBuildableEmcImporter.generated.h"

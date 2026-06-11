@@ -2,9 +2,9 @@ using UnrealBuildTool;
 using System.IO;
 using System;
 
-public class EquivalentExchangeFicsitRemoteMonitoring : ModuleRules
+public class EquivalentExchangeFRM : ModuleRules
 {
-	public EquivalentExchangeFicsitRemoteMonitoring(ReadOnlyTargetRules Target) : base(Target)
+	public EquivalentExchangeFRM(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 		CppStandard = CppStandardVersion.Cpp20;

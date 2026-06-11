@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FGBuildableStorage.h"
+#include "Buildables/FGBuildableStorage.h"
 
 #include "EEBuildableStorageEnergyCondenser.generated.h"
 

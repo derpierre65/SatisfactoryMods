@@ -3,12 +3,12 @@
 #include "CoreMinimal.h"
 #include "Module/GameWorldModule.h"
 
-#include "EquivalentExchangeFicsitRemoteMonitoringGameWorldModule.generated.h"
+#include "EquivalentExchangeFRMGameWorldModule.generated.h"
 
 struct FRequestData;
 
 UCLASS()
-class EQUIVALENTEXCHANGEFICSITREMOTEMONITORING_API UEquivalentExchangeFicsitRemoteMonitoringGameWorldModule : public UGameWorldModule
+class EQUIVALENTEXCHANGEFRM_API UEquivalentExchangeFRMGameWorldModule : public UGameWorldModule
 {
 	GENERATED_BODY()
 

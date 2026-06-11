@@ -1,11 +1,11 @@
-﻿#include "EEModSubsystem.h"
+﻿#include "Subsystems/EEModSubsystem.h"
 
 #include "EEEMCPointsData.h"
 #include "EERemoteCallObject.h"
 #include "EquivalentExchange.h"
 #include "FGPlayerController.h"
-#include "SubsystemActorManager.h"
-#include "UnrealNetwork.h"
+#include "Subsystem/SubsystemActorManager.h"
+#include "Net/UnrealNetwork.h"
 #include "Kismet/GameplayStatics.h"
 
 AEEModSubsystem::AEEModSubsystem()
