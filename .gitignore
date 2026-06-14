@@ -8,3 +8,7 @@
 */Saved/*
 */!Source/*
 */!*.uplugin
+
+node_modules
+.env
+/package-lock.json
