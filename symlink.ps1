@@ -18,7 +18,7 @@ if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
     exit
 }
 
-$SMLPath = "M:\GameDev\Satisfactory\SatisfactoryModLoader\Mods"
+$SMLPath = "M:\GameDev\Satisfactory\SatisfactoryModLoader\Mods\GameFeatures"
 $ModDir = "M:\GameDev\Satisfactory\SatisfactoryMods"
 
 function New-Sym-Link ($Link) {
